@@ -1,0 +1,170 @@
+main(stat) ::= <<
+import cv2
+import numpy as np
+import imageio
+from antlr4 import *
+import IIMLMain as runIIML
+
+def loadImg(imagePath):
+    img = cv2.imread(imagePath, cv2.IMREAD_GRAYSCALE)
+    if img is None:
+        print(f"Failed to load image {imagePath}.")
+        exit(1)
+
+    maxPx = img.max()
+    minPx = img.min()
+
+    img = img.astype(np.float32)
+    img = (img-minPx) * 255.0 / (maxPx-minPx)
+    img = np.clip(img, 0, 255).astype(np.uint8)
+
+    return img
+
+
+def drawImg(image, imageName):
+    cv2.imshow(imageName, image)
+    while True:
+        
+        key = cv2.waitKey(100)
+
+        # Verify if the image is closed
+        if cv2.getWindowProperty(imageName, cv2.WND_PROP_VISIBLE) \< 1:
+            break
+
+        # Check if a key was pressed
+        if key != -1:
+            break
+    cv2.destroyAllWindows()
+
+
+def run(script_path):
+
+    img=None
+
+    with open(script_path, "r") as f:
+        code = f.read()
+
+        img = runIIML.main(code)
+
+    if img is None:
+        print(f"Failed to execute IIML script {script_path}.")
+        exit(1)
+    
+    return img
+
+
+if __name__ == "__main__":
+    <stats(stat)>
+>>
+
+
+
+stats(stat) ::= <<
+<if(stat)><stat; separator="\n"><endif>
+>>
+
+assign(stat,var,value) ::= <<
+<stats(stat)>
+
+<var> = <value>
+>>
+
+exprLoad(stat, img) ::= <<
+loadImg(<img>)
+>>
+
+output(stat,out) ::= <<
+<stats(stat)>
+
+print(<out>)
+>>
+
+draw(stat, img) ::= <<
+<stats(stat)>
+
+drawImg(<img>, "Image")
+>>
+
+store(stat, path, img) ::= <<
+<stats(stat)>
+
+cv2.imwrite(<path>, <img>)
+>>
+
+
+ifStatement(preStat, cond, trueStat, falseStat) ::= <<
+<stats(preStat)>
+
+if <cond>:
+    <stats(trueStat)>
+<if(falseStat)>
+else:
+    <stats(falseStat)>
+<endif>
+>>
+
+exprRun(cmd) ::= <<
+run(<cmd>)
+>>
+
+untilLoop(preStat, cond, loopStat) ::= <<
+while True:
+    <stats(preStat)>
+    
+    if not <cond>:
+        break
+
+    <stats(loopStat)>
+>>
+
+morph(e1, op, e2) ::=<<
+cv2.morphologyEx(<e1>, <op>, <e2>)
+>>
+
+count(list, numb) ::=<<
+<list>[<list>==<numb>].size
+>>
+
+saveGIF(stat, path, img) ::=<<
+<stats(stat)>
+
+imageio.mimsave(<path>, <img>, duration=0.5, loop=0)
+>>
+
+forLoop(preStat, var, list, loopStat) ::=<<
+<stats(preStat)>
+
+for <var> in <list>:
+    <stats(loopStat)>
+>>
+
+hatOp(img, op, kernel) ::=<<
+cv2.morphologyEx(<img>, <op>, <kernel>)
+>>
+
+pxArithmetic(stat, var, list, op, exp) ::= <<
+<stats(stat)>
+
+<var>=np.clip(<list>.astype(np.int64) <op> <exp>, 0, 255).astype(np.uint8)
+>>
+
+list_delete(list, elem, stat) ::=<<
+<stats(stat)>
+
+<list>=np.delete(<list>, <elem>, axis=0)
+>>
+
+list_append(list, elem, stat) ::=<<
+<stats(stat)>
+
+if <list>.size==0:
+    <list>=np.array([<elem>])
+else:
+    <list>=np.append(<list>, [<elem>], axis=0)
+>>
+
+list_pop(list, elem, stat) ::=<<
+<stats(stat)>
+
+<list>=<list>[~np.all(<list> == <elem>, axis=1)]
+>>

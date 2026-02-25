@@ -1,0 +1,8 @@
+
+
+Change "create line" statement. "place line (x1,y1) (x2,y2) at x1 y1 with intensity 1" -> no need to state x1,y1 twice;
+
+place line (x1,y1) (x2,y2) with intensity 1
+place circle radius at x1 y1 with intensity 1
+
+

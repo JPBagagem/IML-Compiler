@@ -1,0 +1,48 @@
+Estrutura Típica do Analisador Semântico -> AST (Árvore Sintática Abstrata): Criada pelo parser, Visitor Semântico e a Tabela de Símbolos.
+- Como ter acesso à tabela de simbolos - passar como argumento no visitor.
+
+Margarida: (expressions and types)
+- visitExprNumber done tested
+- visitExprPercentage done tested
+- visitExprId done tested
+- visitExprMultDiv done tested
+- visitExprAddSub done tested
+- visitExprPxAddSub done tested supports list of list of percentage or number
+- visitExprUnary done tested supports list of list of percentage or number
+- visitExprMorf done tested supports list of list of percentage or number
+- visitExprHats done tested supports list of list of percentage or number
+- visitExprRelational done tested
+- visitExprEqNeq done tested
+- visitExprParenthesis done tested
+- visitExprReverse done tested
+- visitExprRun done tested for errors don't know if it actually works string templates
+- visitExprColumns done tested supports list of list of percentage or number - I PASS THE CONTEXT UP AS NUMBERTYPE
+- visitExprPxMultDiv done tested supports list of list of percentage or number
+- visitExprPxRelational done tested, make sure i'm accepting the right parameters - supports list of list of percentage or number
+- visitExprLoad done tested
+- visitExprAllAny done tested supports list of list of percentage or number
+
+Marta: (declarations and instructions)
+- visitInstantiationStat - feito
+- visitAssigmentStat - feito
+- visitIfStat - feito
+- visitUntilStat - feito
+- visitForStat - feito
+- visitSaveStat - feito
+- visitCommandStat - feito
+- visitDrawCommand - feito 
+- visitExprString - feito
+- visitExprBoolean - feito
+- visitProgram - feito 
+- visitListOpStat - feito 
+- visitExprList - feito 
+- visitExprOr - feito
+- visitExprCount - feito 
+- visitExprRead - feito 
+- visitExprAnd - feito 
+- visitExprScale - feito
+- visitExprTypeConvertion - feito 
+- visitTypeID - feito 
+- visitExprPxEqNeq - feito 
+
+duvida -> or
