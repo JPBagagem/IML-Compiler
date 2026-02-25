@@ -1,0 +1,4 @@
+// loads an image from pgm file
+image i is run from "../newTests/example01.iiml"
+
+draw i

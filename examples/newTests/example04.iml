@@ -1,0 +1,7 @@
+// load image from a given path (input)
+image i is load from "../images/sample02.pgm"
+image j is load from "../images/sample03.pgm"
+
+image k is image(i .!= j)
+
+draw k

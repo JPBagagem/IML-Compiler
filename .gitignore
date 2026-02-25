@@ -1,0 +1,14 @@
+*.o
+**__pycache__
+.vscode
+.idea
+~*
+.idea
+~*
+*.pyc
+*.class
+*.jar
+pythonFiles/
+src/IIML/__pycache__
+src/IIML/*.interp
+src/IIML/*.tokens

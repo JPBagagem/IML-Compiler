@@ -1,0 +1,17 @@
+// load image from a given path (input)
+image i is load from "../images/sample00.pgm"
+
+i is i .+ (1/255) 
+
+// create empty list of images
+list of image l is []
+
+// while non-black pixels exist
+until any pixel i .< 1 do
+    // erode image and append result to list
+    l append i
+    i is i .+ i
+done
+
+// storing a list of images produces a gif
+l store into "iluminado.gif"

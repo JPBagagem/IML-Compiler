@@ -1,0 +1,13 @@
+list of list of number j is [[0.5, 0.1], [0.1, 0.1]]
+
+j store into "numb.pgm"
+
+list of list of percentage g is [[100%, 10%], [10%, 100%]]
+
+g store into "percentage.pgm"
+
+g pop [100%, 10%]
+
+output g
+
+g store into "percentage2.pgm"

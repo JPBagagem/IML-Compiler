@@ -1,0 +1,11 @@
+list of list of number j is [[0.5, 0.1], [0.1, 0.1]]
+
+output j[0]
+
+output j[0][1]
+
+image i is load from "../images/sample01.pgm"
+
+output i[30]
+
+output i[21][15]

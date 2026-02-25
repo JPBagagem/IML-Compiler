@@ -1,0 +1,12 @@
+// loads an image from pgm file
+image i is load from "../images/sample00.pgm"
+
+list of image g is [i, |i, +i, -i]
+
+// plot a vanishing image
+for image p within g do
+    draw p
+done
+
+// saves a copy of image i
+g store into "rotate.gif"

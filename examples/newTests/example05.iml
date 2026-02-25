@@ -1,0 +1,28 @@
+// load images from files
+image i0 is load from "../images/sample00.pgm"
+image i1 is load from "../images/sample01.pgm"
+list of image i0s is []
+list of image i1s is []
+
+list of percentage l is 
+[100%, 90%, 80%, 70%, 60%,
+50%, 40%, 30%, 20%, 10%]
+
+// plot a vanishing image
+for percentage p within l do
+    image r is i0 .* p
+    i0s append r
+done
+
+list of percentage l2 is 
+[10%, 20%, 30%, 40%, 50%,
+60%, 70%, 80%, 90%, 100%]
+
+// plot a vanishing image
+for percentage p2 within l2 do
+    image k is i1 .* p2
+    i1s append k
+done
+
+// store the resulting image
+i0s.+i1s store into "../images/blend.gif"

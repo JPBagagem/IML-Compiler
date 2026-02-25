@@ -1,0 +1,5 @@
+image i is load from "../images/sample01.pgm"
+
+i is .-i
+
+draw i

@@ -1,0 +1,36 @@
+image size 1000 by 700 background 0
+
+// BASE (rectangle outline as house base)
+place line (300,350) (700,350) with thickness 6 with intensity 1
+place line (300,650) (700,650) with thickness 6 with intensity 1
+place line (300,350) (300,650) with thickness 6 with intensity 1
+place line (700,350) (700,650) with thickness 6 with intensity 1
+
+// ROOF (triangle made from lines)
+place line (300,350) (500,200) with thickness 10 with intensity 1
+place line (700,350) (500,200) with thickness 10 with intensity 1
+
+// DOOR (lines)
+place line (470,650) (470,530) with thickness 8 with intensity 1
+place line (470,530) (530,530) with thickness 8 with intensity 1
+place line (530,530) (530,650) with thickness 8 with intensity 1
+
+// LEFT WINDOW (lines)
+place line (400,430) (460,430) with thickness 6 with intensity 1
+place line (460,430) (460,490) with thickness 6 with intensity 1
+place line (460,490) (400,490) with thickness 6 with intensity 1
+place line (400,490) (400,430) with thickness 6 with intensity 1
+
+// RIGHT WINDOW (lines)
+place line (540,430) (600,430) with thickness 6 with intensity 1
+place line (600,430) (600,490) with thickness 6 with intensity 1
+place line (600,490) (540,490) with thickness 6 with intensity 1
+place line (540,490) (540,430) with thickness 6 with intensity 1
+
+// Additional shapes
+
+place circle radius 50 at 500 180 with intensity 1
+place cross 40 at 430 460 with intensity 1
+place plus 40 at 570 460 with intensity 1
+place star 30 at 500 490 with intensity 1
+
